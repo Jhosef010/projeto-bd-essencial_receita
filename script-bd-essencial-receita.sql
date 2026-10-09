@@ -43,3 +43,17 @@ CREATE TABLE despesa_virtual (
 SELECT * FROM despesa_virtual;
 
 
+CREATE TABLE item_pedido (
+    id_item_pedido SERIAL PRIMARY KEY,
+    fk_pedido int,
+    fk_ingrediente int,
+    quantidade decimal(10,2),
+    preco_unitario decimal(10,2),
+    foi_substituido boolean
+);
+
+SELECT * FROM item_pedido;
+
+
+
+
