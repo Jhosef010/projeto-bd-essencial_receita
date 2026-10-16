@@ -123,3 +123,17 @@ CREATE TABLE cupom_desconto(
 
 SELECT * FROM cupom_desconto; 
 
+
+
+CREATE TABLE ingrediente_receita(
+ id_ingrediente_receita SERIAL PRIMARY KEY,
+ id_receita INT  not null,
+ id_ingredienta INT not null,
+ quantidade  decimal(10,2),
+ unhidade_medida  varchar(20),
+ id_ingrediente_substituto  INT,
+ eh_obrigatorio  boolean
+);
+
+SELECT * FROM ingrediente_receita; 
+
