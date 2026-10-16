@@ -88,3 +88,14 @@ CREATE TABLE pedido (
 SELECT * FROM pedido; 
 
 
+CREATE TABLE estoque_mercado (
+ id_mercado SERIAL PRIMARY KEY,
+ fk_ingrediente  INT not null,
+ preco_unitario  decimal(10,2) not null,
+ quantidade_disponivel  decimal(10,2)   not null
+);
+
+SELECT * FROM estoque_mercado; 
+
+
+
