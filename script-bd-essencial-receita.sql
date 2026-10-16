@@ -98,4 +98,16 @@ CREATE TABLE estoque_mercado (
 SELECT * FROM estoque_mercado; 
 
 
+CREATE TABLE mercado_parceiro(
+ id_usuario_lojista SERIAL PRIMARY KEY,
+ nome_fantasia varchar(120) not null,
+ cnpj  varchar(18) not null,
+ valor_pedido_minimo  decimal(10,2) not null,
+ latitude  decimal(10,2) not null,
+ longitude  decimal(10,2) not null,
+ ativo  boolean
+);
+
+SELECT * FROM mercado_parceiro; 
+
 
