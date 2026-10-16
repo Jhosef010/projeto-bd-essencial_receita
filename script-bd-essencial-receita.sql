@@ -67,5 +67,24 @@ CREATE TABLE receita (
   data_cadastro timestamp
 );
 
-SELECT * FROM item_pedido; 
+SELECT * FROM receita; 
+
+
+CREATE TABLE pedido (
+ id_pedido SERIAL PRIMARY KEY,
+ fk_cliente  INT,
+ fk_mercado  INT,
+ fk_entregador INT,
+ fk_cupom  INT,
+ tipo_entrega varchar(255) not null,
+ status_pedido_enum varchar(255) not null,
+ permite_substituicao_marca boolean,
+ valor_subtotal decimal(10,2),
+ valor_desconto decimal(10,2),
+ valor_total decimal(10,2),
+ data_pedido timestamp
+);
+
+SELECT * FROM pedido; 
+
 
