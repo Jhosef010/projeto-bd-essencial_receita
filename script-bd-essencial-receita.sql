@@ -22,14 +22,15 @@ create table public.ingrediente (
 ) TABLESPACE pg_default;
 
 CREATE TABLE despesa_virtual (
-    id_despesa SERIAL PRIMARY KEY,
-    fk_ingrediente INT, 
-    fk_usuario INT,
-    quantidade decimal(10,2),
-    unidade_medida varchar(20),
-    data_atualizacao timestamp
+  id_despesa SERIAL PRIMARY KEY,
+  fk_ingrediente INT, 
+  fk_usuario INT,
+  quantidade decimal(10,2),
+  unidade_medida varchar(20),
+  data_atualizacao timestamp,
+  constraint fk_ingrediente foreign key (fk_ingrediente) references ingrediente (id_ingrediente),
+  constraint fk_usuario foreign key (fk_usuario) references usuario (id_usuario)
 );
-
 SELECT * FROM despesa_virtual;
 
 
