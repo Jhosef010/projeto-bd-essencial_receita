@@ -21,11 +21,10 @@ create table public.ingrediente (
     constraint ingrediente_pkey primary key (id_ingrediente)
 ) TABLESPACE pg_default;
 
-
 CREATE TABLE despesa_virtual (
     id_despesa SERIAL PRIMARY KEY,
-    fk_despesa INT,
-    fk_ingrediente INT,
+    fk_ingrediente INT, 
+    fk_usuario INT,
     quantidade decimal(10,2),
     unidade_medida varchar(20),
     data_atualizacao timestamp
@@ -118,12 +117,13 @@ SELECT * FROM cupom_desconto;
 
 CREATE TABLE ingrediente_receita(
  id_ingrediente_receita SERIAL PRIMARY KEY,
- id_receita INT  not null,
- id_ingredienta INT not null,
+ fk_receita INT  not null,
+ fk_ingrediente INT not null,
  quantidade  decimal(10,2),
- unhidade_medida  varchar(20),
+ unidade_medida  varchar(20),
  id_ingrediente_substituto  INT,
  eh_obrigatorio  boolean
 );
+
 
 SELECT * FROM ingrediente_receita; 
