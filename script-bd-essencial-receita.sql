@@ -93,10 +93,11 @@ SELECT * FROM pedido;
 
 
 CREATE TABLE estoque_mercado (
-id_mercado SERIAL PRIMARY KEY,
-fk_ingrediente  INT not null,
-preco_unitario  decimal(10,2) not null,
-quantidade_disponivel  decimal(10,2)   not null
+    id_mercado SERIAL PRIMARY KEY,
+    fk_ingrediente  INT not null,
+    preco_unitario  decimal(10,2) not null,
+    quantidade_disponivel  decimal(10,2)   not null,
+    constraint fk_ingrediente foreign KEY (fk_ingrediente) references ingrediente (id_ingrediente)
 );
 
 
@@ -106,13 +107,13 @@ SELECT * FROM estoque_mercado;
 
 
 CREATE TABLE mercado_parceiro(
-id_usuario_lojista SERIAL PRIMARY KEY,
-nome_fantasia varchar(120) not null,
-cnpj  varchar(18) not null,
-valor_pedido_minimo  decimal(10,2) not null,
-latitude  decimal(10,2) not null,
-longitude  decimal(10,2) not null,
-ativo  boolean
+    id_usuario_lojista SERIAL PRIMARY KEY,
+    nome_fantasia varchar(120) not null,
+    cnpj  varchar(18) not null,
+    valor_pedido_minimo  decimal(10,2) not null,
+    latitude  decimal(10,2) not null,
+    longitude  decimal(10,2) not null,
+    ativo  boolean
 );
 
 
@@ -122,13 +123,13 @@ SELECT * FROM mercado_parceiro;
 
 
 CREATE TABLE cupom_desconto(
-id_cupom SERIAL PRIMARY KEY,
-id_mercado int,
-codigo_cupom  varchar(30) not null,
-percentual_desconto  decimal(5,2),
-valor_desconto_fixo  decimal(10,2),
-data_validade   timestamp not null,
-ativo  boolean
+    id_cupom SERIAL PRIMARY KEY,
+    id_mercado int,
+    codigo_cupom  varchar(30) not null,
+    percentual_desconto  decimal(5,2),
+    valor_desconto_fixo  decimal(10,2),
+    data_validade   timestamp not null,
+    ativo  boolean
 );
 
 
@@ -140,18 +141,18 @@ SELECT * FROM cupom_desconto;
 
 
 CREATE TABLE ingrediente_receita(
-id_ingrediente_receita SERIAL PRIMARY KEY,
-fk_receita INT  not null,
-fk_ingrediente INT not null,
-quantidade  decimal(10,2),
-unidade_medida  varchar(20),
-id_ingrediente_substituto  INT,
-eh_obrigatorio  boolean
+    id_ingrediente_receita SERIAL PRIMARY KEY,
+    fk_receita INT  not null,
+    fk_ingrediente INT not null,
+    quantidade  decimal(10,2),
+    unidade_medida  varchar(20),
+    id_ingrediente_substituto  INT,
+    eh_obrigatorio  boolean
+    constraint fk_receita foreign KEY (fk_receita) references receita (id_receita)
+    constraint fk_ingrediente foreign KEY (fk_ingrediente) references ingrediente (id_ingrediente)
 );
 
 
 
 
 SELECT * FROM ingrediente_receita;
-
-
